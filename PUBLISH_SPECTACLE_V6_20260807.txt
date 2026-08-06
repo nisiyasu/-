@@ -1,0 +1,2 @@
+This merge intentionally triggers GitHub Pages publication for Spectacle v6.
+Build marker: SPECTACLE-V6-20260807-001
