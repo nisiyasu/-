@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Life Command Center · RIOT NEON</title>
-  <link rel="stylesheet" href="./app.css?v=20260807v1">
+  <link rel="stylesheet" href="./app.css?v=20260807v2">
 </head>
 <body>
   <div id="app" class="app-shell">
@@ -72,10 +72,12 @@
         </div>
       </section>
     </main>
+
     <nav class="bottom-nav" aria-label="メインナビゲーション">
       <button class="nav-btn active" data-view="homeView" aria-current="page"><span class="nav-icon">⚡</span><span>ホーム</span></button>
       <button class="nav-btn" data-view="savedView"><span class="nav-icon">▣</span><span>保存リスト</span></button>
     </nav>
+
     <div id="commandToast" class="command-toast" role="status" aria-live="polite"></div>
     <div id="detailModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
       <div class="modal-backdrop" data-close-modal></div>
@@ -89,17 +91,19 @@
       </article>
     </div>
   </div>
+
   <script src="./assets/runtime/home_00.js"></script>
   <script src="./assets/runtime/home_01.js"></script>
   <script src="./assets/runtime/home_02.js"></script>
   <script src="./assets/runtime/home_03.js"></script>
   <script src="./assets/runtime/home_04.js"></script>
   <script src="./assets/runtime/home_05.js"></script>
-  <script src="./assets/runtime/save_00.js"></script>
-  <script src="./assets/runtime/save_01.js"></script>
-  <script src="./assets/runtime/save_02.js"></script>
-  <script src="./assets/runtime/save_03.js"></script>
-  <script src="./assets/runtime/save_04.js"></script>
+
+  <script src="./assets/runtime/savehero_00.js"></script>
+  <script src="./assets/runtime/savehero_01.js"></script>
+  <script src="./assets/runtime/savehero_02.js"></script>
+  <script src="./assets/runtime/savehero_03.js"></script>
+
   <script src="./assets/runtime/icon_diary.js"></script>
   <script src="./assets/runtime/icon_insight.js"></script>
   <script src="./assets/runtime/icon_rule.js"></script>
@@ -107,6 +111,6 @@
   <script src="./assets/runtime/card_texture.js"></script>
   <script src="./assets/runtime/brush_lime.js"></script>
   <script src="./assets/runtime/assets-init.js"></script>
-  <script src="./app.js?v=20260807v1"></script>
+  <script src="./app.js?v=20260807v2"></script>
 </body>
 </html>
