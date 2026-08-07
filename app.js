@@ -24,6 +24,7 @@
   const assets=window.LCC_ASSETS||{};
   const iconMap={"日記":assets.diary,"気付き":assets.insight,"ルール":assets.rule,"その他":assets.other};
   const COMMANDS=["瞑想","イメージング","アファメーション","リーディング","ジャーナリング","エクササイズ","BTC1チャット"];
+  const PRIVATE_SOURCE_REPO="https://github.com/nisiyasu/life-command-center";
 
   if(assets.home)$("#homeSkin").src=assets.home;
   if(assets.save)$("#savedHero").style.backgroundImage=`url("${assets.save}")`;
@@ -120,6 +121,28 @@
     toast(next?`${command} DONE｜今日 ${todayCount}/7｜累計 ${total}`:`${command} を取り消しました｜今日 ${todayCount}/7`);
   }
 
+  function sourceUrl(item){
+    const direct=String(item?.source_url||"").trim();
+    if(direct.startsWith("https://github.com/"))return direct;
+    const path=String(item?.source_path||"").trim().replace(/^\/+/,"");
+    if(path){
+      const encoded=path.split("/").map(encodeURIComponent).join("/");
+      return `${PRIVATE_SOURCE_REPO}/blob/main/${encoded}`;
+    }
+    return PRIVATE_SOURCE_REPO;
+  }
+
+  function makeSourceLink(item,{compact=false}={}){
+    const a=document.createElement("a");
+    a.className=compact?"source-link source-link--compact":"source-link";
+    a.href=sourceUrl(item);
+    a.target="_blank";
+    a.rel="noopener noreferrer";
+    a.setAttribute("aria-label",`${item.organized_title||"保存項目"}のGitHub原本を開く`);
+    a.textContent=compact?"GitHub ↗":"GitHub原本を開く ↗";
+    return a;
+  }
+
   async function loadItems({announce=false}={}){
     const status=$("#syncStatus");status.textContent="同期中…";
     try{
@@ -152,7 +175,8 @@
     const side=document.createElement("div");side.className="card-side";
     const time=document.createElement("span");time.className="card-time";time.append(safeText(fmtDateTime(item.created_at).replace(" ","\n")));
     const open=document.createElement("button");open.className="open-btn";open.type="button";open.dataset.open=item.id;open.setAttribute("aria-label",`${item.organized_title}を開く`);open.textContent="開く ›";
-    side.append(time,open);article.append(img,copy,side);return article;
+    const source=makeSourceLink(item,{compact:true});
+    side.append(time,open,source);article.append(img,copy,side);return article;
   }
 
   function renderSaved(){
@@ -168,7 +192,17 @@
 
   function setView(id){state.view=id;$$('.view').forEach(v=>v.classList.toggle('active',v.id===id));$$('.nav-btn').forEach(btn=>{const active=btn.dataset.view===id;btn.classList.toggle('active',active);if(active)btn.setAttribute('aria-current','page');else btn.removeAttribute('aria-current')});window.scrollTo({top:0,behavior:'auto'})}
   let toastTimer;function toast(message){const el=$("#commandToast");el.textContent=message;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),1800)}
-  function openDetail(id){const item=state.items.find(x=>x.id===id);if(!item)return;$("#detailCategory").textContent=item.category;$("#detailTitle").textContent=item.organized_title;$("#detailMeta").textContent=fmtDateTime(item.created_at);$("#detailOriginal").textContent=item.original_text;$("#detailBody").textContent=item.body;$("#detailModal").classList.remove("hidden");document.body.style.overflow="hidden";$(".modal-close").focus()}
+  function openDetail(id){
+    const item=state.items.find(x=>x.id===id);if(!item)return;
+    $("#detailCategory").textContent=item.category;
+    $("#detailTitle").textContent=item.organized_title;
+    $("#detailMeta").textContent=fmtDateTime(item.created_at);
+    $("#detailOriginal").textContent=item.original_text;
+    $("#detailBody").textContent=item.body;
+    const source=$("#detailSourceLink");
+    if(source){source.href=sourceUrl(item);source.setAttribute("aria-label",`${item.organized_title}のGitHub原本を開く`)}
+    $("#detailModal").classList.remove("hidden");document.body.style.overflow="hidden";$(".modal-close").focus();
+  }
   function closeDetail(){$("#detailModal").classList.add("hidden");document.body.style.overflow=""}
 
   $$(".nav-btn").forEach(btn=>btn.addEventListener("click",()=>setView(btn.dataset.view)));
