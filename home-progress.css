@@ -1,0 +1,154 @@
+/* Life Command Center / HOME progress visual stage
+   Stage 1 only: textless image assets + CSS placement/state skin.
+   No completion logic, persistence, counters, or JavaScript is implemented here. */
+
+:root{
+  --lcc-command-done-frame:url("./assets/ui/home_command_done_frame.svg");
+  --lcc-progress-blank:url("./assets/ui/home_progress_blank.svg");
+}
+
+/* ---------------------------------------------------------
+   7 COMMANDS / completion skin
+   JS will later add .is-done and aria-pressed="true".
+   Until then this layer stays invisible.
+   --------------------------------------------------------- */
+.command-hit{
+  isolation:isolate;
+  overflow:visible;
+}
+
+.command-hit::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  pointer-events:none;
+  inset:-16% -13%;
+  background:var(--lcc-command-done-frame) center/100% 100% no-repeat;
+  opacity:0;
+  transform:scale(.96);
+  filter:saturate(1.08);
+  transition:opacity .18s ease,transform .18s ease,filter .18s ease;
+}
+
+.command-hit.is-done::after,
+.command-hit[aria-pressed="true"]::after{
+  opacity:1;
+  transform:scale(1);
+  filter:
+    saturate(1.18)
+    drop-shadow(0 0 5px rgba(255,0,143,.95))
+    drop-shadow(0 0 10px rgba(202,255,0,.72))
+    drop-shadow(0 0 14px rgba(20,232,255,.36));
+  animation:lcc-command-done-pulse 2.2s ease-in-out infinite;
+}
+
+.command-hit.is-done:active::after,
+.command-hit[aria-pressed="true"]:active::after{
+  transform:scale(.98);
+}
+
+@keyframes lcc-command-done-pulse{
+  0%,100%{
+    opacity:.88;
+    filter:
+      saturate(1.12)
+      drop-shadow(0 0 4px rgba(255,0,143,.78))
+      drop-shadow(0 0 8px rgba(202,255,0,.58))
+      drop-shadow(0 0 10px rgba(20,232,255,.25));
+  }
+  50%{
+    opacity:1;
+    filter:
+      saturate(1.28)
+      drop-shadow(0 0 7px rgba(255,0,143,1))
+      drop-shadow(0 0 14px rgba(202,255,0,.88))
+      drop-shadow(0 0 18px rgba(20,232,255,.43));
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .command-hit::after{transition:none}
+  .command-hit.is-done::after,
+  .command-hit[aria-pressed="true"]::after{animation:none}
+}
+
+/* ---------------------------------------------------------
+   ACCUMULATION / blank dynamic panel
+   This is deliberately not inserted into HTML yet.
+   The future .home-progress-stage sits over the baked static
+   stats region and uses a text-free opaque image as its base.
+   CSS only places the asset. HTML/JS comes in Stage 2.
+   --------------------------------------------------------- */
+.home-progress-stage{
+  position:absolute;
+  z-index:8;
+  left:4.4%;
+  top:80.5%;
+  width:91.2%;
+  aspect-ratio:864/250;
+  padding:6.2% 6.5% 5.5%;
+  background:var(--lcc-progress-blank) center/100% 100% no-repeat;
+  pointer-events:none;
+  color:#fff;
+}
+
+.home-progress-stage__grid{
+  width:100%;
+  height:100%;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:auto 1fr;
+  column-gap:4%;
+  align-items:center;
+}
+
+.home-progress-stage__label{
+  min-width:0;
+  color:#caff00;
+  font-size:clamp(8px,2.55vw,11px);
+  line-height:1.1;
+  font-weight:900;
+  letter-spacing:.04em;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.home-progress-stage__value{
+  min-width:0;
+  color:#fff;
+  font-size:clamp(20px,7vw,30px);
+  line-height:1;
+  font-weight:950;
+  letter-spacing:-.04em;
+  text-shadow:0 0 10px rgba(255,0,143,.45),0 0 16px rgba(20,232,255,.18);
+}
+
+.home-progress-stage__value:nth-of-type(2){
+  color:#caff00;
+  text-shadow:0 0 11px rgba(202,255,0,.48);
+}
+
+.home-progress-stage__value:nth-of-type(3){
+  color:#14e8ff;
+  text-shadow:0 0 11px rgba(20,232,255,.48);
+}
+
+/* Optional second line prepared for a later streak / today score row. */
+.home-progress-stage__sub{
+  position:absolute;
+  left:7%;
+  right:7%;
+  bottom:11%;
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  font-size:clamp(8px,2.35vw,10px);
+  font-weight:850;
+  color:#c9cbd2;
+}
+
+@media (max-width:360px){
+  .command-hit::after{inset:-13% -10%}
+  .home-progress-stage{left:4%;width:92%;padding-inline:5.8%}
+}
