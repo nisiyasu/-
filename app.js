@@ -53,7 +53,7 @@
     $("#cardModeBtn").classList.toggle("active",state.viewMode==="card");$("#listModeBtn").classList.toggle("active",state.viewMode==="list");
     $("#organizedBtn").classList.toggle("active",state.titleMode==="organized");$("#originalBtn").classList.toggle("active",state.titleMode==="original");
   }
-  function setView(id){state.view=id;$$('.view').forEach(v=>v.classList.toggle('active',v.id===id));$$('.nav-btn').forEach(btn=>{const active=btn.dataset.view===id;btn.classList.toggle('active',active);if(active)btn.setAttribute('aria-current','page');else btn.removeAttribute('aria-current')});window.scrollTo({top:0,behavior:'instant'})}
+  function setView(id){state.view=id;$$('.view').forEach(v=>v.classList.toggle('active',v.id===id));$$('.nav-btn').forEach(btn=>{const active=btn.dataset.view===id;btn.classList.toggle('active',active);if(active)btn.setAttribute('aria-current','page');else btn.removeAttribute('aria-current')});window.scrollTo({top:0,behavior:'auto'})}
   let toastTimer;function toast(message){const el=$("#commandToast");el.textContent=message;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),1800)}
   function openDetail(id){const item=state.items.find(x=>x.id===id);if(!item)return;$("#detailCategory").textContent=item.category;$("#detailTitle").textContent=item.organized_title;$("#detailMeta").textContent=fmtDateTime(item.created_at);$("#detailOriginal").textContent=item.original_text;$("#detailBody").textContent=item.body;$("#detailModal").classList.remove("hidden");document.body.style.overflow="hidden";$(".modal-close").focus()}
   function closeDetail(){$("#detailModal").classList.add("hidden");document.body.style.overflow=""}
