@@ -6,27 +6,41 @@
   <meta name="theme-color" content="#050507">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="lcc-build" content="20260807-v6-riot-neon">
+  <meta name="lcc-build" content="20260808-v7-progress">
   <title>Life Command Center · RIOT NEON</title>
-  <link rel="stylesheet" href="./app.css?v=20260807v6">
-  <link rel="stylesheet" href="./app-overrides.css?v=20260807v6">
-  <link rel="stylesheet" href="./home-progress.css?v=20260808s1">
+  <link rel="stylesheet" href="./app.css?v=20260808v7">
+  <link rel="stylesheet" href="./app-overrides.css?v=20260808v7">
+  <link rel="stylesheet" href="./home-progress.css?v=20260808v7">
 </head>
 <body>
-  <div id="app" class="app-shell" data-build="20260807-v6-riot-neon">
+  <div id="app" class="app-shell" data-build="20260808-v7-progress">
     <main>
       <section id="homeView" class="view active" aria-label="ホーム">
         <div class="poster home-poster" id="homePoster">
           <img id="homeSkin" alt="Life Command Center RIOT NEON ホーム">
           <div class="command-hotspots" aria-label="今日の7コマンド">
-            <button class="command-hit c1" data-command="瞑想" aria-label="瞑想"></button>
-            <button class="command-hit c2" data-command="イメージング" aria-label="イメージング"></button>
-            <button class="command-hit c3" data-command="アファメーション" aria-label="アファメーション"></button>
-            <button class="command-hit c4" data-command="リーディング" aria-label="リーディング"></button>
-            <button class="command-hit c5" data-command="ジャーナリング" aria-label="ジャーナリング"></button>
-            <button class="command-hit c6" data-command="エクササイズ" aria-label="エクササイズ"></button>
-            <button class="command-hit c7" data-command="BTC1チャット" aria-label="BTC1チャット"></button>
+            <button class="command-hit c1" data-command="瞑想" aria-label="瞑想" aria-pressed="false"></button>
+            <button class="command-hit c2" data-command="イメージング" aria-label="イメージング" aria-pressed="false"></button>
+            <button class="command-hit c3" data-command="アファメーション" aria-label="アファメーション" aria-pressed="false"></button>
+            <button class="command-hit c4" data-command="リーディング" aria-label="リーディング" aria-pressed="false"></button>
+            <button class="command-hit c5" data-command="ジャーナリング" aria-label="ジャーナリング" aria-pressed="false"></button>
+            <button class="command-hit c6" data-command="エクササイズ" aria-label="エクササイズ" aria-pressed="false"></button>
+            <button class="command-hit c7" data-command="BTC1チャット" aria-label="BTC1チャット" aria-pressed="false"></button>
           </div>
+          <section id="homeProgress" class="home-progress-stage" aria-label="積み上げ状況" aria-live="polite">
+            <div class="home-progress-stage__grid">
+              <div class="home-progress-stage__label">今日</div>
+              <div class="home-progress-stage__label">累計実行</div>
+              <div class="home-progress-stage__label">連続実行</div>
+              <div id="todayProgress" class="home-progress-stage__value">0/7</div>
+              <div id="totalProgress" class="home-progress-stage__value is-total">0</div>
+              <div id="streakProgress" class="home-progress-stage__value is-streak">0日</div>
+            </div>
+            <div class="home-progress-stage__sub">
+              <span id="progressMessage">今日の一歩を積み上げる</span>
+              <span id="progressDate"></span>
+            </div>
+          </section>
         </div>
       </section>
 
@@ -95,23 +109,23 @@
     </div>
   </div>
 
-  <script src="./assets/runtime/home_00.js?v=20260807v6"></script>
-  <script src="./assets/runtime/home_01.js?v=20260807v6"></script>
-  <script src="./assets/runtime/home_02.js?v=20260807v6"></script>
-  <script src="./assets/runtime/home_03.js?v=20260807v6"></script>
-  <script src="./assets/runtime/home_04.js?v=20260807v6"></script>
-  <script src="./assets/runtime/home_05.js?v=20260807v6"></script>
-  <script src="./assets/runtime/savehero_00.js?v=20260807v6"></script>
-  <script src="./assets/runtime/savehero_01.js?v=20260807v6"></script>
-  <script src="./assets/runtime/savehero_02.js?v=20260807v6"></script>
-  <script src="./assets/runtime/savehero_03.js?v=20260807v6"></script>
-  <script src="./assets/runtime/icon_diary.js?v=20260807v6"></script>
-  <script src="./assets/runtime/icon_insight.js?v=20260807v6"></script>
-  <script src="./assets/runtime/icon_rule.js?v=20260807v6"></script>
-  <script src="./assets/runtime/icon_other.js?v=20260807v6"></script>
-  <script src="./assets/runtime/card_texture.js?v=20260807v6"></script>
-  <script src="./assets/runtime/brush_lime.js?v=20260807v6"></script>
-  <script src="./assets/runtime/assets-init.js?v=20260807v6"></script>
-  <script src="./app.js?v=20260807v6"></script>
+  <script src="./assets/runtime/home_00.js?v=20260808v7"></script>
+  <script src="./assets/runtime/home_01.js?v=20260808v7"></script>
+  <script src="./assets/runtime/home_02.js?v=20260808v7"></script>
+  <script src="./assets/runtime/home_03.js?v=20260808v7"></script>
+  <script src="./assets/runtime/home_04.js?v=20260808v7"></script>
+  <script src="./assets/runtime/home_05.js?v=20260808v7"></script>
+  <script src="./assets/runtime/savehero_00.js?v=20260808v7"></script>
+  <script src="./assets/runtime/savehero_01.js?v=20260808v7"></script>
+  <script src="./assets/runtime/savehero_02.js?v=20260808v7"></script>
+  <script src="./assets/runtime/savehero_03.js?v=20260808v7"></script>
+  <script src="./assets/runtime/icon_diary.js?v=20260808v7"></script>
+  <script src="./assets/runtime/icon_insight.js?v=20260808v7"></script>
+  <script src="./assets/runtime/icon_rule.js?v=20260808v7"></script>
+  <script src="./assets/runtime/icon_other.js?v=20260808v7"></script>
+  <script src="./assets/runtime/card_texture.js?v=20260808v7"></script>
+  <script src="./assets/runtime/brush_lime.js?v=20260808v7"></script>
+  <script src="./assets/runtime/assets-init.js?v=20260808v7"></script>
+  <script src="./app.js?v=20260808v7"></script>
 </body>
 </html>
