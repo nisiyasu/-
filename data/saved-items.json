@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "canonical": false,
+  "source": "prototype_seed",
+  "notice": "This JSON is a display index for the smartphone v1 prototype. Canonical source remains Markdown/original records.",
+  "items": [
+    {
+      "id": "fire-001",
+      "category": "日記",
+      "organized_title": "目標を忘れない仕組み",
+      "original_text": "とりあえずさ、火を絶やさないのが重要。あとは目標を忘れないこと。",
+      "body": "火を絶やさないことと、目標を忘れないことをホームの中心に置く。イメージングとアファメーションを中核にして、自分を本線へ戻す。",
+      "created_at": "2026-08-07T18:20:00+09:00"
+    },
+    {
+      "id": "memory-002",
+      "category": "気付き",
+      "organized_title": "自分の言葉で探せる記憶庫",
+      "original_text": "俺が指示した原文なら俺の脳とリンクしやすいやん。でもそれだけだと足りないから、ボタンひとつで切り替えれる機能。",
+      "body": "AIが整理したタイトルと、本人の原文をワンタップで切り替える。検索対象は整理タイトル・原文・本文のすべて。",
+      "created_at": "2026-08-07T18:34:00+09:00"
+    },
+    {
+      "id": "ledger-003",
+      "category": "ルール",
+      "organized_title": "保存リストの正本ルール",
+      "original_text": "保存したものを見れるようにしたいだったな。",
+      "body": "保存リストは正本そのものではなく閲覧・検索・操作面。原文を整理版で上書きせず、JSONは索引として扱う。",
+      "created_at": "2026-08-07T18:10:00+09:00"
+    },
+    {
+      "id": "action-004",
+      "category": "その他",
+      "organized_title": "考えすぎる前に前進する",
+      "original_text": "考えすぎると動けなくなる。とりあえずやれ。",
+      "body": "迷いで停止し続けないため、次の一手へ接続する。必要な情報は保存し、後から取り出せるようにする。",
+      "created_at": "2026-08-06T21:33:00+09:00"
+    },
+    {
+      "id": "journal-005",
+      "category": "日記",
+      "organized_title": "ジャーナリングの役割",
+      "original_text": "ジャーナリングで頭の中を外に出して、目標と今日の行動をつなげる。",
+      "body": "思考を外部化し、目的と現実の行動のズレを見つけるための記録。",
+      "created_at": "2026-08-06T06:41:00+09:00"
+    },
+    {
+      "id": "design-006",
+      "category": "ルール",
+      "organized_title": "RIOT NEON実装原則",
+      "original_text": "CSSに絵を描かせない。CSSには絵を配置させる。",
+      "body": "複雑なグランジ、人物、観客、ネオン質感は画像アセットで保持し、HTML/CSS/JSは可変情報と操作を担当する。",
+      "created_at": "2026-08-05T23:58:00+09:00"
+    }
+  ]
+}
