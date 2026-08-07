@@ -56,6 +56,43 @@
 .saved-card > *{position:relative;z-index:1}
 .search-box::after{display:none}
 
+/* GitHub source links. The public shell may expose the repository URL,
+   but GitHub still enforces access to the private repository contents. */
+.source-link{
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 13px;
+  border:1px solid var(--cyan);
+  border-radius:8px;
+  background:rgba(5,8,12,.92);
+  color:var(--cyan);
+  text-decoration:none;
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap;
+  box-shadow:0 0 12px rgba(20,232,255,.22),inset 0 0 12px rgba(20,232,255,.04);
+  -webkit-tap-highlight-color:transparent;
+}
+.source-link:active,.source-link:focus-visible{
+  color:#05070a;
+  background:var(--cyan);
+  outline:none;
+  box-shadow:0 0 20px rgba(20,232,255,.58);
+}
+.source-link--compact{
+  min-width:58px;
+  padding-inline:7px;
+  font-size:10px;
+}
+.detail-panel>.source-link{
+  width:100%;
+  margin-top:18px;
+  min-height:50px;
+}
+.saved-list.list-mode .source-link--compact{display:none}
+
 /* Keep the two compact mode controls on one line at the 390px acceptance width. */
 .seg{
   font-size:10px;
