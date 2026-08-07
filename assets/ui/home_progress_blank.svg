@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 864 250" fill="none">
+  <defs>
+    <filter id="rough" x="-15%" y="-30%" width="130%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.08" numOctaves="2" seed="23" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="pinkGlow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="10" result="b"/><feFlood flood-color="#ff008f" flood-opacity=".7"/><feComposite in2="b" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="limeGlow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feFlood flood-color="#caff00" flood-opacity=".75"/><feComposite in2="b" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="panel" x1="28" y1="20" x2="830" y2="238" gradientUnits="userSpaceOnUse"><stop stop-color="#030407"/><stop offset=".55" stop-color="#09080d"/><stop offset="1" stop-color="#020306"/></linearGradient>
+    <linearGradient id="accent" x1="48" y1="38" x2="819" y2="222" gradientUnits="userSpaceOnUse"><stop stop-color="#ff008f"/><stop offset=".32" stop-color="#ff008f"/><stop offset=".54" stop-color="#14e8ff"/><stop offset=".78" stop-color="#caff00"/><stop offset="1" stop-color="#ffd400"/></linearGradient>
+  </defs>
+  <path d="M30 23h804l12 20-9 177-26 12H43l-23-17 8-174 2-18Z" fill="url(#panel)" fill-opacity=".985"/>
+  <path d="M31 27h798l9 17-7 170-24 10H47l-18-14 7-167-5-16Z" stroke="#ff008f" stroke-width="10" stroke-linejoin="round" opacity=".92" filter="url(#pinkGlow)"/>
+  <path d="M47 42h765l9 12-7 145-17 9H61l-15-10 6-142-5-14Z" stroke="#caff00" stroke-width="5" stroke-linejoin="round" opacity=".9" filter="url(#limeGlow)"/>
+  <path d="M58 54h744M57 194h744" stroke="url(#accent)" stroke-width="2.5" stroke-dasharray="66 13 18 9" opacity=".7" filter="url(#rough)"/>
+  <path d="M19 88c51-18 94-17 138-31M716 226c43-10 76-24 127-58M18 185c47 10 84 11 127 2M699 22c58 11 87 22 146 42" stroke="#14e8ff" stroke-width="5" stroke-linecap="round" opacity=".52" filter="url(#rough)"/>
+  <path d="M83 26 162 42M691 221l88-20M29 135l95-4m616-1 95 13" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".32"/>
+</svg>
