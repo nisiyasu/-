@@ -1,17 +1,13 @@
-/* Life Command Center / HOME progress visual stage
-   Stage 1 only: textless image assets + CSS placement/state skin.
-   No completion logic, persistence, counters, or JavaScript is implemented here. */
+/* Life Command Center / HOME progress visual layer
+   Textless image assets provide the RIOT NEON frame and progress panel.
+   CSS only places those assets and renders live state supplied by app.js. */
 
 :root{
   --lcc-command-done-frame:url("./assets/ui/home_command_done_frame.svg");
   --lcc-progress-blank:url("./assets/ui/home_progress_blank.svg");
 }
 
-/* ---------------------------------------------------------
-   7 COMMANDS / completion skin
-   JS will later add .is-done and aria-pressed="true".
-   Until then this layer stays invisible.
-   --------------------------------------------------------- */
+/* 7 COMMANDS / completed-state skin */
 .command-hit{
   isolation:isolate;
   overflow:visible;
@@ -72,13 +68,7 @@
   .command-hit[aria-pressed="true"]::after{animation:none}
 }
 
-/* ---------------------------------------------------------
-   ACCUMULATION / blank dynamic panel
-   This is deliberately not inserted into HTML yet.
-   The future .home-progress-stage sits over the baked static
-   stats region and uses a text-free opaque image as its base.
-   CSS only places the asset. HTML/JS comes in Stage 2.
-   --------------------------------------------------------- */
+/* Dynamic accumulation panel placed over the old baked stat area. */
 .home-progress-stage{
   position:absolute;
   z-index:8;
@@ -90,6 +80,7 @@
   background:var(--lcc-progress-blank) center/100% 100% no-repeat;
   pointer-events:none;
   color:#fff;
+  text-align:left;
 }
 
 .home-progress-stage__grid{
@@ -124,17 +115,16 @@
   text-shadow:0 0 10px rgba(255,0,143,.45),0 0 16px rgba(20,232,255,.18);
 }
 
-.home-progress-stage__value:nth-of-type(2){
+.home-progress-stage__value.is-total{
   color:#caff00;
   text-shadow:0 0 11px rgba(202,255,0,.48);
 }
 
-.home-progress-stage__value:nth-of-type(3){
+.home-progress-stage__value.is-streak{
   color:#14e8ff;
   text-shadow:0 0 11px rgba(20,232,255,.48);
 }
 
-/* Optional second line prepared for a later streak / today score row. */
 .home-progress-stage__sub{
   position:absolute;
   left:7%;
@@ -144,9 +134,13 @@
   justify-content:space-between;
   gap:8px;
   font-size:clamp(8px,2.35vw,10px);
+  line-height:1.2;
   font-weight:850;
   color:#c9cbd2;
 }
+
+#progressMessage{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#progressDate{flex:0 0 auto;color:#fff}
 
 @media (max-width:360px){
   .command-hit::after{inset:-13% -10%}
